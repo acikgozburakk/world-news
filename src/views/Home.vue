@@ -1,18 +1,41 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <Header />
+    <SideBar />
+    <v-main>
+      <v-container>
+        <Carousel />
+        <CardList />
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
-
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import Header from "@/components/Header";
+import SideBar from "@/components/Sidebar";
+import Carousel from "@/components/Carousel";
+import CardList from "@/components/CardList";
 export default {
-  name: 'Home',
   components: {
-    HelloWorld
-  }
-}
+    Header,
+    SideBar,
+    Carousel,
+    CardList,
+  },
+  data() {
+    return {
+      colors: [
+        "indigo",
+        "warning",
+        "pink darken-2",
+        "red lighten-1",
+        "deep-purple accent-4",
+      ],
+      slides: ["First", "Second", "Third", "Fourth", "Fifth"],
+      drawer: true,
+    };
+  },
+};
 </script>
+
+
