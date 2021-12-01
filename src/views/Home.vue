@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <Header />
     <SideBar />
     <v-main>
       <v-container>
@@ -11,13 +10,11 @@
   </v-app>
 </template>
 <script>
-import Header from "@/components/Header";
 import SideBar from "@/components/Sidebar";
 import Carousel from "@/components/Carousel";
 import CardList from "@/components/CardList";
 export default {
   components: {
-    Header,
     SideBar,
     Carousel,
     CardList,

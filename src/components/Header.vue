@@ -2,15 +2,14 @@
 <v-app-bar
       app
     >
-      <v-app-bar-nav-icon @click="$emit('drawerr',1)"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>Application</v-toolbar-title>
-
       <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
+      <v-text-field
+              hide-details
+              prepend-icon="mdi-magnify"
+              single-line
+              placeholder="Searrch Word in the World"
+            ></v-text-field>
+      <v-spacer></v-spacer>
     </v-app-bar>
 </template>
 <script>
