@@ -1,5 +1,5 @@
  <template>
-  <v-navigation-drawer v-model="drawer" app>
+  <v-navigation-drawer  app>
     <v-sheet>
       <v-img
         lazy-src="https://picsum.photos/id/11/10/6"

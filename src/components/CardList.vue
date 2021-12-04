@@ -1,15 +1,24 @@
 <template>
 <v-row>
-    <v-col v-for="n in 24" :key="n" cols="4">
-    <v-card height="200"></v-card>
+    <v-col v-for="(headline,index) in headlineList" :key="index" cols="4">
+      <CardItem  :headline="headline"/>
   </v-col>
 </v-row>
   
 </template>
 
 <script>
-export default {};
+import CardItem from "@/components/CardItem";
+export default {
+  components: {
+    CardItem
+  },
+  props: {
+    headlineList: {
+      type: Array,
+      required: true,
+    },
+  },
+};
 </script>
 
-<style>
-</style>

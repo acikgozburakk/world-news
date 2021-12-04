@@ -4,7 +4,7 @@
     <v-main>
       <v-container>
         <Carousel />
-        <CardList />
+        <CardList :headlineList="headlineList"/>
       </v-container>
     </v-main>
   </v-app>
@@ -13,6 +13,7 @@
 import SideBar from "@/components/Sidebar";
 import Carousel from "@/components/Carousel";
 import CardList from "@/components/CardList";
+import { mapGetters } from "vuex";
 export default {
   components: {
     SideBar,
@@ -28,10 +29,18 @@ export default {
         "red lighten-1",
         "deep-purple accent-4",
       ],
-      slides: ["First", "Second", "Third", "Fourth", "Fifth"],
-      drawer: true,
+      slides: ["First", "Second", "Third", "Fourth", "Fifth"]
     };
   },
+  computed: {
+    ...mapGetters({
+      headlineList: "headlinesList"
+    }),
+
+  },
+  created(){
+    this.$store.dispatch("getHeadlines","tr");
+  }
 };
 </script>
 
