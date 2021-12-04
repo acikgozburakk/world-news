@@ -8,7 +8,7 @@
     >
       <v-img
         :aspect-ratio="16/9"
-        :src="headline.urlToImage"
+        :src="headline.urlToImage" contain v-on:error="onImgError"
       >
         <v-expand-transition>
           <div
@@ -26,12 +26,29 @@
 <script>
 
 export default {
+    data(){
+        return {
+            failed_image: false
+        }
+    },
     props: {
     headline: {
       type: Object,
       required: true,
     },
   },
+  computed: {
+    newsImage: function() {
+      return this.headline.urlToImage !== null ?  this.headline.urlToImage :"@/assets/defaultNews.png"
+        }
+    },
+    methods: {
+      onImgError: function(event) {
+
+         this.failed_image = true;
+
+      }
+   },
   created(){
       console.log(this.headline)
   }
