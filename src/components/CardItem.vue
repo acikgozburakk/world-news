@@ -16,7 +16,7 @@
             class="d-flex transition-fast-in-fast-out black darken-2 v-card--reveal text-h2 white--text"
             style="height: 100%;"
           >
-            $14.99
+            Deneme
           </div>
         </v-expand-transition>
       </v-img>
