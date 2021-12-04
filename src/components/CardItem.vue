@@ -13,10 +13,10 @@
         <v-expand-transition>
           <div
             v-if="hover"
-            class="d-flex transition-fast-in-fast-out black darken-2 v-card--reveal text-h2 white--text"
+            class="d-flex transition-fast-in-fast-out black darken-2 v-card--reveal white--text"
             style="height: 100%;"
           >
-            Deneme
+            {{headline.title}}
           </div>
         </v-expand-transition>
       </v-img>
