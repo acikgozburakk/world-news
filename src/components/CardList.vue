@@ -1,6 +1,6 @@
 <template>
 <v-row>
-    <v-col v-for="(headline,index) in headlineList" :key="index" cols="4">
+    <v-col v-for="(headline,index) in headlineList" :key="index" cols="3">
       <CardItem  :headline="headline"/>
   </v-col>
 </v-row>

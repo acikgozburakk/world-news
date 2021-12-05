@@ -1,27 +1,19 @@
 <template>
-    
-    <v-hover v-slot="{ hover }">
-    <v-card
-      class="mx-auto"
-      color="grey lighten-4"
-      max-width="600"
-    >
-      <v-img
-        :aspect-ratio="16/9"
-        :src="headline.urlToImage" contain v-on:error="onImgError"
-      >
-        <v-expand-transition>
-          <div
-            v-if="hover"
-            class="d-flex transition-fast-in-fast-out black darken-2 v-card--reveal white--text"
-            style="height: 100%;"
-          >
-            {{headline.title}}
-          </div>
-        </v-expand-transition>
-      </v-img>
-    </v-card>
-  </v-hover>
+  <v-card
+    class="mx-auto overflow-hidden"
+    max-width="344"
+    height="275"
+    elevation="24"
+    shaped
+  >
+    <v-img
+      :src="headline.urlToImage" v-on:error="onImgError"
+    ></v-img>
+
+    <v-card-text >
+      {{headline.title}}
+    </v-card-text>
+  </v-card>
 </template>
 <script>
 
@@ -59,7 +51,7 @@ export default {
 .v-card--reveal {
   align-items: center;
   justify-content: center;
-  opacity: 0.7;
+  opacity: 0.8;
   position: absolute;
   width: 100%;
 }
