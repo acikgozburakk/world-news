@@ -3,7 +3,7 @@
     <SideBar />
     <v-main>
       <v-container>
-        <Carousel />
+        <Carousel :technologyNews="technologyNews" />
         <CardList :headlineList="headlineList"/>
       </v-container>
     </v-main>
@@ -34,12 +34,14 @@ export default {
   },
   computed: {
     ...mapGetters({
-      headlineList: "headlinesList"
+      headlineList: "headlinesList",
+      technologyNews: "technologyNews"
     }),
 
   },
   created(){
     this.$store.dispatch("getHeadlines","tr");
+    this.$store.dispatch("getTechnologyNews");
   }
 };
 </script>

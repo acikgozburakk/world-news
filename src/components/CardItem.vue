@@ -1,10 +1,11 @@
 <template>
   <v-card
-    class="mx-auto overflow-hidden"
+    class="mx-auto overflow-hidden vcard"
     max-width="344"
     height="275"
     elevation="24"
     shaped
+    @click="goToUrl(headline.url)"
   >
     <v-img
       :src="headline.urlToImage" v-on:error="onImgError"
@@ -39,6 +40,9 @@ export default {
 
          this.failed_image = true;
 
+      },
+      goToUrl(url){
+        window.open(url,'_blank')
       }
    },
   created(){
@@ -54,5 +58,13 @@ export default {
   opacity: 0.8;
   position: absolute;
   width: 100%;
+}
+.vcard{
+  transition: transform .2s;
+  cursor: pointer;
+}
+.vcard:hover{
+  transform: scale(1.25);
+  z-index: 9999;
 }
 </style>

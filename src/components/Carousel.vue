@@ -1,26 +1,36 @@
 <template>
-  <v-carousel cycle height="400" hide-delimiter-background show-arrows-on-hover>
-    <v-carousel-item v-for="(slide, i) in slides" :key="i">
-      <v-sheet :color="colors[i]" height="100%">
-        <v-row class="fill-height" justify="start" align="center">
-          <div class="ml-15">
-            <v-card width="400">
-              <v-card-text>
-                <div>Word of the Day</div>
-                <p class="text-h4 text--primary">be•nev•o•lent</p>
-                <p>adjective</p>
-                <div class="text--primary">
-                  well meaning and kindly.<br />
-                  "a benevolent smile"
-                </div>
-              </v-card-text>
-              <v-card-actions>
-                <v-btn text color="deep-purple accent-4"> Learn More </v-btn>
-              </v-card-actions>
-            </v-card>
-          </div>
-        </v-row>
-      </v-sheet>
+  <v-carousel>
+    <v-carousel-item
+      v-for="(item,i) in technologyNews"
+      :key="i"
+      :src="imageSource(item.urlToImage)"
+      reverse-transition="fade-transition"
+      transition="fade-transition"
+    >
+    <v-row
+    class="fill-height"
+    align="center"
+    justify="start">
+    <v-card
+    class="ml-15"
+    max-width="344"
+  >
+    <v-card-text>
+      <div>{{item.author}}</div>
+      <p class="text-h4 text--primary">
+        {{item.title}}
+      </p>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn
+        text
+        color="teal accent-4"
+        @click="goToUrl(item.url)"
+      >
+        Siteye Git
+      </v-btn>
+    </v-card-actions>
+  </v-card></v-row>
     </v-carousel-item>
   </v-carousel>
 </template>
@@ -29,15 +39,31 @@
 export default {
   data() {
     return {
-      colors: [
-        "indigo",
-        "warning",
-        "pink darken-2",
-        "red lighten-1",
-        "deep-purple accent-4",
-      ],
-      slides: ["First", "Second", "Third", "Fourth", "Fifth"],
     };
+  },
+  props: {
+    technologyNews: {
+      type: Array,
+      required: true,
+    },
+  },
+  methods:{
+    goToUrl(url){
+      window.open(url,'_blank')
+    },
+    
+    imageSource(url){
+      return url || 'https://www.havelsan.com.tr/content/images/uploads/HVLYLDZ_Ekip,1637_big.png'
+    }
   },
 };
 </script>
+
+<style scoped>
+.v-card--reveal {
+  bottom: 0;
+  opacity: 1 !important;
+  position: absolute;
+  width: 100%;
+}
+</style>

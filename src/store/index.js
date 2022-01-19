@@ -8,12 +8,19 @@ export default new Vuex.Store({
   state: {
     baseURL:"https://newsapi.org/v2",
     apiKey:"9718cfb964b342df87482f525cb2195c",
-    headlines: []
+    headlines: [],
+    technologyNews:[]
 
   },
   mutations: {
     setHeadlines(state, headline) {
       state.headlines = headline;
+    },
+    setTechnologyNews(state, news) {
+      for (let index = 0; index < 8; index++) {
+        state.technologyNews.push(news[index]);
+      }
+      
     },
   },
   actions: {
@@ -24,9 +31,17 @@ export default new Vuex.Store({
           commit("setHeadlines", headlines_response.data.articles || []);
         });
     },
+    getTechnologyNews({ commit, state }) {
+      axios
+        .get(`${state.baseURL}/top-headlines?country=tr&category=technology&apiKey=${state.apiKey}`)
+        .then((news_response) => {
+          commit("setTechnologyNews", news_response.data.articles || []);
+        });
+    },
   },
   getters:{
     headlinesList: (state) => state.headlines,
+    technologyNews: (state) => state.technologyNews
   },
   modules: {
   }

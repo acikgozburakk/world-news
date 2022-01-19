@@ -1,5 +1,5 @@
 <template>
-<v-row>
+<v-row class="mt-10">
     <v-col v-for="(headline,index) in headlineList" :key="index" cols="3">
       <CardItem  :headline="headline"/>
   </v-col>
