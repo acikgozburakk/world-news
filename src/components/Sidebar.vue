@@ -9,15 +9,25 @@
 
     <v-divider></v-divider>
 
-    <v-list>
-      <v-list-item link v-for="([name, flag], i) in country" :key="i">
-        <v-list-item-avatar>
-          <v-avatar >
-            <v-img :src="flag"></v-img>
-          </v-avatar>
-        </v-list-item-avatar>
-        <v-list-item-title>{{ name }}</v-list-item-title>
-      </v-list-item>
+    <v-list shaped>
+      <v-subheader>Category</v-subheader>
+      <v-list-item-group
+        v-model="selectedItem"
+        color="primary"
+      >
+        <v-list-item
+          v-for="(item, i) in category"
+          :key="i"
+          @click="changeRoute(item.link)"
+        >
+          <v-list-item-icon>
+            <v-icon v-text="item.icon"></v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.text"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list-item-group>
     </v-list>
   </v-navigation-drawer>
 </template>
@@ -25,23 +35,27 @@
 export default {
   data() {
     return {
-      admins: [
-        ["Management", "mdi-account-multiple-outline"],
-        ["Settings", "mdi-cog-outline"],
-      ],
-      cruds: [
-        ["Create", "mdi-plus-outline"],
-        ["Read", "mdi-file-outline"],
-        ["Update", "mdi-update"],
-        ["Delete", "mdi-delete"],
-      ],
-      country: [
-        ["Turkey", "../assets/tr_flag.svg"],
-        ["United State", "../assets/us_flag.svg"],
-        ["United Kingdom", "../assets/uk_flag.svg"],
-        ["Germany", "../assets/de_flag.svg"],
+      selectedItem: 0,
+      category: [
+        { text: 'Home', icon: 'mdi-home' , link:'home' },
+        { text: 'Business', icon: 'mdi-domain', link:'business' },
+        { text: 'Entertainment', icon: 'mdi-television', link:'entertainment' },
+        { text: 'Health', icon: 'mdi-bottle-tonic-plus-outline', link:'health' },
+        { text: 'Science', icon: 'mdi-chemical-weapon', link:'science' },
+        { text: 'Sports', icon: 'mdi-basketball', link:'sports' },
+        { text: 'Technology', icon: 'mdi-cellphone-link', link:'technology' }
       ],
     };
   },
+  methods:{
+    changeRoute(categoryName){
+      if (categoryName == 'home') {
+        this.$router.push('/')
+      }else{
+        this.$router.push({ path: `/category/${categoryName}` })
+      }
+      
+    }
+  }
 };
 </script>

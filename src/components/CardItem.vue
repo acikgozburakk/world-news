@@ -4,7 +4,6 @@
     max-width="344"
     height="275"
     elevation="24"
-    shaped
     @click="goToUrl(headline.url)"
   >
     <v-img

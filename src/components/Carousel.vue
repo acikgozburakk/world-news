@@ -5,7 +5,9 @@
       :key="i"
       :src="imageSource(item.urlToImage)"
       reverse-transition="fade-transition"
+      class="carousel"
       transition="fade-transition"
+      @click="goToUrl(item.url)"
     >
     <v-row
     class="fill-height"
@@ -21,15 +23,6 @@
         {{item.title}}
       </p>
     </v-card-text>
-    <v-card-actions>
-      <v-btn
-        text
-        color="teal accent-4"
-        @click="goToUrl(item.url)"
-      >
-        Siteye Git
-      </v-btn>
-    </v-card-actions>
   </v-card></v-row>
     </v-carousel-item>
   </v-carousel>
@@ -65,5 +58,8 @@ export default {
   opacity: 1 !important;
   position: absolute;
   width: 100%;
+}
+.carousel{
+  cursor: pointer;
 }
 </style>

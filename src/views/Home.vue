@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <SideBar />
     <v-main>
       <v-container>
         <Carousel :technologyNews="technologyNews" />
@@ -10,13 +9,11 @@
   </v-app>
 </template>
 <script>
-import SideBar from "@/components/Sidebar";
 import Carousel from "@/components/Carousel";
 import CardList from "@/components/CardList";
 import { mapGetters } from "vuex";
 export default {
   components: {
-    SideBar,
     Carousel,
     CardList,
   },
